@@ -1,7 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import moment from "moment";
 
 function App() {
+  const date = moment().format("MMMM Do YYYY, h:mm:ss ");
+
   return (
     <div className="App">
       <header className="App-header">
