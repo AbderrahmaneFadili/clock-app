@@ -4,7 +4,7 @@ import { BiRefresh } from "react-icons/bi";
 export const QuoteWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 2.2rem;
+  padding: 3rem 0;
   height: 50vh;
   position: relative;
 `;
@@ -22,7 +22,7 @@ export const QuoteAuthor = styled.h5`
 
 export const Refresh = styled(BiRefresh)`
   position: absolute;
-  right: 1rem;
+  right: 0;
   top: 1rem;
   font-size: 2rem;
   cursor: pointer;
