@@ -20,8 +20,8 @@ const ClockWrapper = styled.div`
 const App = () => {
   //check if date is AM or PM
   function formatAMPM(date) {
-    var hours = date.getHours();
-    var ampm = hours >= 12 ? "pm" : "am";
+    let hours = date.getHours();
+    let ampm = hours >= 12 ? "pm" : "am";
     return ampm;
   }
 
