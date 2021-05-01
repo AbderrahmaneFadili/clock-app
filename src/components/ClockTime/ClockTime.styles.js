@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ClockTimeWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 10vh;
 `;
 
 export const ClockTimeGreating = styled.span`
@@ -23,7 +24,7 @@ export const ClockTimeGreatingText = styled.span`
 `;
 
 export const ClockTimeClock = styled.h1`
-  font-size: 7rem;
+  font-size: 25vw;
 `;
 
 export const TimeZone = styled.span`

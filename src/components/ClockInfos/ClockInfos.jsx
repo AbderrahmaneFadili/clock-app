@@ -7,11 +7,16 @@ import {
 } from "./ClockInfos.styles";
 
 import { Container } from "../../theme/GlobalStyle";
+import { useSelector } from "react-redux";
 
 const ClockInfos = () => {
+  const showMore = useSelector((state) => {
+    return state.showMoreInfoReducer.showMore;
+  });
+
   return (
-    <ClockInfosWrapper>
-      <Container>
+    <ClockInfosWrapper showMore={showMore}>
+      <Container style={{ marginTop: 50 }}>
         <ClockInfoContainer>
           <ClockInfo>Current timezone</ClockInfo>
           <ClockInfoValue>Europe/london</ClockInfoValue>

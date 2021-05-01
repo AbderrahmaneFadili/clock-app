@@ -5,8 +5,9 @@ export const QuoteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem 0;
-  height: 50vh;
+  height: 30vh;
   position: relative;
+  display: ${({ showMore }) => (!showMore ? "block" : "none")};
 `;
 
 export const QuoteText = styled.q`

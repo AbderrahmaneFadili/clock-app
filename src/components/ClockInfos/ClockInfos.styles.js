@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const ClockInfosWrapper = styled.div`
   background-color: ${({ theme }) => theme.darkBg};
   color: ${({ theme }) => theme.white};
-  height: 40vh;
+  height: ${({ showMore }) => (showMore ? "40vh" : "0")};
   display: flex;
   flex-direction: column;
-  padding: 4rem 0 0;
+  overflow: hidden;
+  transition: 0.4s linear;
 `;
 
 export const ClockInfoContainer = styled.div`
