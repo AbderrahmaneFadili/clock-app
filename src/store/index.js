@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import showMoreInfoReducer from "./reducers/showMoreInfo.reducer";
-
+import quoteReducer from "./reducers/quotes.reducer";
 const rootReducer = combineReducers({
   showMoreInfoReducer,
+  quoteReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

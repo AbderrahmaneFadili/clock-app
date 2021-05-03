@@ -10,7 +10,7 @@ import {
 import { BsMoon } from "react-icons/bs";
 import { FaSun } from "react-icons/fa";
 
-const ClockTime = ({ amPm }) => {
+const ClockTime = ({ currentTime, amPm }) => {
   return (
     <ClockTimeWrapper>
       <ClockTimeGreating>
@@ -22,7 +22,8 @@ const ClockTime = ({ amPm }) => {
         </ClockTimeGreatingText>
       </ClockTimeGreating>
       <ClockTimeClock>
-        23:30<TimeZone>BST</TimeZone>
+        {currentTime}
+        <TimeZone>BST</TimeZone>
       </ClockTimeClock>
     </ClockTimeWrapper>
   );

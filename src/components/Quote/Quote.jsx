@@ -1,21 +1,35 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { QuoteAuthor, QuoteText, QuoteWrapper, Refresh } from "./Quote.styles";
+import { fetchQuote } from "../../store/actions/quotes.actions";
 
 const Quote = () => {
+  const { loading, quote, error } = useSelector((state) => state.quoteReducer);
+
   const showMore = useSelector((state) => {
     return state.showMoreInfoReducer.showMore;
   });
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchQuote());
+  }, []);
+
+  const handleRefresh = () => {
+    dispatch(fetchQuote());
+  };
+
+  console.log(loading, quote, error);
   return (
     <QuoteWrapper showMore={showMore}>
-      <QuoteText>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta officia
-        beatae deleniti quaerat veritatis nemo dolorem repudiandae unde
-        excepturi, in dolor minus.
-      </QuoteText>
-      <QuoteAuthor>John Doe</QuoteAuthor>
-      <Refresh />
+      {quote && <QuoteText> {quote.content}</QuoteText>}
+      <QuoteAuthor>{quote && quote.author}</QuoteAuthor>
+      <Refresh
+        onClick={() => {
+          handleRefresh();
+        }}
+      />
     </QuoteWrapper>
   );
 };

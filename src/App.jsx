@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GlobalStyle from "./theme/GlobalStyle";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
@@ -18,6 +18,8 @@ const ClockWrapper = styled.div`
 `;
 
 const App = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
   //check if date is AM or PM
   function formatAMPM(date) {
     let hours = date.getHours();
@@ -25,11 +27,17 @@ const App = () => {
     return ampm;
   }
 
+  useEffect(() => {
+    setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <ClockWrapper amPm={formatAMPM(new Date())}>
         <GlobalStyle />
-        <Clock amPm={formatAMPM(new Date())} />
+        <Clock time={currentTime} amPm={formatAMPM(new Date())} />
         <ClockInfos amPm={formatAMPM(new Date())} />
       </ClockWrapper>
     </ThemeProvider>
