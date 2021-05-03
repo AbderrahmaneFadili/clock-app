@@ -9,8 +9,12 @@ import {
 } from "./ClockTime.styles";
 import { BsMoon } from "react-icons/bs";
 import { FaSun } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const ClockTime = ({ currentTime, amPm }) => {
+  const { loading, timeZoneData, error } = useSelector(
+    (state) => state.timeZoneReducer,
+  );
   return (
     <ClockTimeWrapper>
       <ClockTimeGreating>
@@ -23,7 +27,7 @@ const ClockTime = ({ currentTime, amPm }) => {
       </ClockTimeGreating>
       <ClockTimeClock>
         {currentTime}
-        <TimeZone>BST</TimeZone>
+        {timeZoneData && <TimeZone>{timeZoneData.currentTime}</TimeZone>}
       </ClockTimeClock>
     </ClockTimeWrapper>
   );

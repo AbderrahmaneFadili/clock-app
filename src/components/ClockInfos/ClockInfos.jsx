@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ClockInfosWrapper,
   ClockInfoContainer,
@@ -8,13 +8,28 @@ import {
 } from "./ClockInfos.styles";
 
 import { Container } from "../../theme/GlobalStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
+import { fetchTimeZone } from "../../store/actions/timeZone.actions";
 
 const ClockInfos = ({ amPm }) => {
   const showMore = useSelector((state) => {
     return state.showMoreInfoReducer.showMore;
   });
 
+  const { loading, timeZoneData, error } = useSelector(
+    (state) => state.timeZoneReducer,
+  );
+
+  const dispatch = useDispatch();
+
+  const dayOftheWeek = moment(new Date()).day();
+  const weekNumber = moment(new Date()).week();
+  const dayOfYear = moment(new Date()).dayOfYear();
+
+  useEffect(() => {
+    dispatch(fetchTimeZone());
+  }, []);
   return (
     <ClockInfosWrapper amPm={amPm} showMore={showMore}>
       <Container
@@ -26,25 +41,27 @@ const ClockInfos = ({ amPm }) => {
         }}
       >
         <Column>
-          <ClockInfoContainer amPm={amPm}>
+          <ClockInfoContainer>
             <ClockInfo>Current timezone</ClockInfo>
-            <ClockInfoValue>Europe/london</ClockInfoValue>
+            {timeZoneData && (
+              <ClockInfoValue>{timeZoneData.timeZone}</ClockInfoValue>
+            )}
           </ClockInfoContainer>
 
-          <ClockInfoContainer amPm={amPm}>
+          <ClockInfoContainer>
             <ClockInfo>day of the year</ClockInfo>
-            <ClockInfoValue>296</ClockInfoValue>
+            <ClockInfoValue>{dayOfYear}</ClockInfoValue>
           </ClockInfoContainer>
         </Column>
 
         <Column>
-          <ClockInfoContainer amPm={amPm}>
+          <ClockInfoContainer>
             <ClockInfo>day of the week</ClockInfo>
-            <ClockInfoValue>5</ClockInfoValue>
+            <ClockInfoValue>{dayOftheWeek}</ClockInfoValue>
           </ClockInfoContainer>
-          <ClockInfoContainer amPm={amPm}>
+          <ClockInfoContainer>
             <ClockInfo>week number</ClockInfo>
-            <ClockInfoValue>42</ClockInfoValue>
+            <ClockInfoValue>{weekNumber}</ClockInfoValue>
           </ClockInfoContainer>
         </Column>
       </Container>
