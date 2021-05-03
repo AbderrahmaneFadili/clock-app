@@ -5,4 +5,5 @@ export const ClockContainer = styled.div`
   color: ${({ theme }) => theme.white};
   transition: 0.4s linear;
   height: ${({ showMore }) => (showMore ? "70vh" : "100vh")};
+  position: "relative";
 `;

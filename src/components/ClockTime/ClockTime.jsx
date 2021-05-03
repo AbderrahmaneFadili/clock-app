@@ -8,15 +8,18 @@ import {
   TimeZone,
 } from "./ClockTime.styles";
 import { BsMoon } from "react-icons/bs";
+import { FaSun } from "react-icons/fa";
 
-const ClockTime = () => {
+const ClockTime = ({ amPm }) => {
   return (
     <ClockTimeWrapper>
       <ClockTimeGreating>
         <ClockTimeGreatingIcon>
-          <BsMoon />
+          {amPm === "am" ? <FaSun /> : <BsMoon />}
         </ClockTimeGreatingIcon>
-        <ClockTimeGreatingText>Good Evening</ClockTimeGreatingText>
+        <ClockTimeGreatingText>
+          {amPm === "am" ? "Good Morning" : "Good Evening"}
+        </ClockTimeGreatingText>
       </ClockTimeGreating>
       <ClockTimeClock>
         23:30<TimeZone>BST</TimeZone>

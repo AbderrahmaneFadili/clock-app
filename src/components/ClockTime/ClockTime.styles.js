@@ -24,7 +24,11 @@ export const ClockTimeGreatingText = styled.span`
 `;
 
 export const ClockTimeClock = styled.h1`
-  font-size: 25vw;
+  font-size: 20vh;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30vh;
+  }
 `;
 
 export const TimeZone = styled.span`

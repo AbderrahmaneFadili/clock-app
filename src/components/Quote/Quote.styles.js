@@ -8,6 +8,14 @@ export const QuoteWrapper = styled.div`
   height: 30vh;
   position: relative;
   display: ${({ showMore }) => (!showMore ? "block" : "none")};
+
+  @media screen and (min-width: 768px) {
+    width: 80%;
+  }
+
+  @media screen and (min-width: 1000px) {
+    width: 50%;
+  }
 `;
 
 export const QuoteText = styled.q`

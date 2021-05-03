@@ -8,7 +8,11 @@ export const LessMoreWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5rem;
+  margin-bottom: -5vh;
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+  }
 `;
 
 export const LessMoreLabel = styled.span`

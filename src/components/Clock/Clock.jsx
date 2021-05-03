@@ -6,7 +6,7 @@ import { ClockContainer } from "./Clock.styles";
 import { Container } from "../../theme/GlobalStyle";
 import { useSelector } from "react-redux";
 
-const Clock = () => {
+const Clock = ({ amPm }) => {
   const showMore = useSelector((state) => {
     return state.showMoreInfoReducer.showMore;
   });
@@ -14,7 +14,7 @@ const Clock = () => {
     <ClockContainer showMore={showMore}>
       <Container>
         <Quote />
-        <ClockTime />
+        <ClockTime amPm={amPm} />
         <LessMore />
       </Container>
     </ClockContainer>

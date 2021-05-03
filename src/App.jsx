@@ -29,8 +29,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <ClockWrapper amPm={formatAMPM(new Date())}>
         <GlobalStyle />
-        <Clock />
-        <ClockInfos />
+        <Clock amPm={formatAMPM(new Date())} />
+        <ClockInfos amPm={formatAMPM(new Date())} />
       </ClockWrapper>
     </ThemeProvider>
   );
