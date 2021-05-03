@@ -17,9 +17,7 @@ const ClockInfos = ({ amPm }) => {
     return state.showMoreInfoReducer.showMore;
   });
 
-  const { loading, timeZoneData, error } = useSelector(
-    (state) => state.timeZoneReducer,
-  );
+  const { timeZoneData } = useSelector((state) => state.timeZoneReducer);
 
   const dispatch = useDispatch();
 

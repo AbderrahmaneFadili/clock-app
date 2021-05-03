@@ -12,9 +12,7 @@ import { FaSun } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 const ClockTime = ({ currentTime, amPm }) => {
-  const { loading, timeZoneData, error } = useSelector(
-    (state) => state.timeZoneReducer,
-  );
+  const { timeZoneData } = useSelector((state) => state.timeZoneReducer);
   return (
     <ClockTimeWrapper>
       <ClockTimeGreating>

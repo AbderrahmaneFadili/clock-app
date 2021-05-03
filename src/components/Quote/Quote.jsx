@@ -4,7 +4,7 @@ import { QuoteAuthor, QuoteText, QuoteWrapper, Refresh } from "./Quote.styles";
 import { fetchQuote } from "../../store/actions/quotes.actions";
 
 const Quote = () => {
-  const { loading, quote, error } = useSelector((state) => state.quoteReducer);
+  const { quote } = useSelector((state) => state.quoteReducer);
 
   const showMore = useSelector((state) => {
     return state.showMoreInfoReducer.showMore;
@@ -19,8 +19,6 @@ const Quote = () => {
   const handleRefresh = () => {
     dispatch(fetchQuote());
   };
-
-  console.log(loading, quote, error);
   return (
     <QuoteWrapper showMore={showMore}>
       {quote && <QuoteText> {quote.content}</QuoteText>}
